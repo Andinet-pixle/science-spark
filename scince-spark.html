@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Science Spark Hub | High School Natural Science</title>
+  <!-- Google Fonts & simple CSS reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #3b82f6;
+      border-radius: 4px;
+    }
+
+    /* Header / Navigation */
+    .site-header {
+      background: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(2px);
+      background: rgba(255,255,255,0.96);
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 1rem 0;
+    }
+    .logo h1 {
+      font-size: 1.7rem;
+      background: linear-gradient(135deg, #0f2b3d, #1e4b6e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .logo span {
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: #3b82f6;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      color: #3b82f6;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e293b;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: #3b82f6;
+    }
+    .btn-outline {
+      border: 1.5px solid #3b82f6;
+      background: transparent;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #3b82f6;
+      transition: 0.2s;
+    }
+    .btn-outline:hover {
+      background: #3b82f6;
+      color: white;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 0 3rem;
+      background: linear-gradient(145deg, #eef2ff 0%, #ffffff 100%);
+    }
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-badge {
+      background: #dbeafe;
+      color: #1e40af;
+      display: inline-block;
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .hero-highlight {
+      color: #3b82f6;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #334155;
+      margin-bottom: 2rem;
+      max-width: 90%;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .stat-item {
+      text-align: left;
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .hero-image {
+      flex: 0.8;
+      text-align: center;
+    }
+    .hero-image svg {
+      max-width: 100%;
+      height: auto;
+    }
+  /* Topics / Subjects Cards */
+    .section {
+      padding: 4rem 0;
+    }
+    .section-light {
+      background: #ffffff;
+    }
+    .section-alt {
+      background: #f1f5f9;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .subject-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.8rem;
+      box-shadow: 0 12px 24px -12px rgba(0,0,0,0.08);
+      transition: all 0.25s ease;
+      border: 1px solid #e2e8f0;
+    }
+    .subject-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
+      border-color: #b9d0f0;
+    }
+    .card-icon {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+    .subject-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+    }
+    .subject-card p {
+      color: #475569;
+      margin-bottom: 1.2rem;
+    }
+    .topic-tag {
+      display: inline-block;
+      background: #eef2ff;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #2563eb;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Resource & Video section (featured) */
+    .featured-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .video-card {
+      flex: 1;
+      background: #0f172a;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      color: white;
+      transition: 0.2s;
+    }
+    .video-preview {
+      background: #1e293b;
+      padding: 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .play-icon {
+      background: #3b82f6;
+      width: 60px;
+      height: 60px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .video-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .resource-list {
+      flex: 1;
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+    }
+    .resource-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid #eef2ff;
+    }
+    .resource-item:last-child {
+      border: none;
+    }
+
+    /* Quiz / interactive spark */
+    .quiz-box {
+      background: linear-gradient(105deg, #ffffff 0%, #f9fcff 100%);
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      border: 1px solid #dce7fc;
+    }
+    .quiz-question {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .quiz-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .quiz-option {
+      background: #f1f5f9;
+      padding: 0.6rem 1.5rem;
+      border-radius: 60px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+      border: 1px solid transparent;
+    }
+    .quiz-option:hover {
+      background: #e2e8f0;
+      transform: scale(0.98);
+    }
+    .quiz-feedback {
+      margin-top: 1rem;
+      font-weight: 600;
+      padding: 0.5rem 0;
+    }
+    .quiz-next {
+      background: #3b82f6;
+      border: none;
+      color: white;
+      padding: 0.6rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    .footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 2.5rem 0;
+      text-align: center;
+    }
+    .footer a {
+      color: #94a3b8;
+      text-decoration: none;
+    }
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .hero-content p {
+        max-width: 100%;
+      }
+      .hero-stats {
+        flex-wrap: wrap;
+      }
+    }
+    button {
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-container">
+    <div class="logo">
+      <h1>Science Spark Hub<span> 🔬⚡</span></h1>
+      <div style="font-size: 0.8rem;">High School Natural Science</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Topics</a></li>
+      <li><a href="#">Videos</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#" class="btn-outline">Spark Lab</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">✨ ignite your curiosity</div>
+        <h1>Master <span class="hero-highlight">Natural Science</span><br>for High School & Beyond</h1>
+        <p>Interactive lessons, engaging video explainers, and quizzes designed to make physics, chemistry, biology, and earth science come alive.</p>
+        <div class="hero-stats">
+          <div class="stat-item"><span class="stat-number">100+</span><br>video lessons</div>
+          <div class="stat-item"><span class="stat-number">500+</span><br>practice questions</div>
+          <div class="stat-item"><span class="stat-number">24/7</span><br>community support</div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <svg width="300" viewBox="0 0 300 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="150" cy="110" r="70" fill="#EFF6FF" stroke="#3B82F6" stroke-width="3"/>
+          <path d="M130 95 L170 110 L130 125 Z" fill="#3B82F6" />
+          <circle cx="150" cy="70" r="12" fill="#FBBF24" />
+          <path d="M80 170 L220 170" stroke="#94A3B8" stroke-width="3" stroke-dasharray="4 4"/>
+          <text x="100" y="190" fill="#1E293B" font-size="10">🔬🧬⚛️🌍</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Subjects (Natural Science Focus) -->
+  <section class="section section-light">
+    <div class="container">
+      <h2>Explore natural sciences</h2>
+      <p style="margin-bottom: 2rem; color:#334155;">Core subjects for high school curriculum — aligned with NGSS & IB standards</p>
+      <div class="cards-grid">
+        <div class="subject-card">
+          <div class="card-icon">⚛️</div>
+          <h3>Physics</h3>
+          <p>Motion, forces, energy, waves, electricity — build intuition with real-world demos.</p>
+          <div><span class="topic-tag">Kinematics</span><span class="topic-tag">Newton's Laws</span><span class="topic-tag">Circuits</span></div>
+        </div>
+        <div class="subject-card">
+          <div class="card-icon">🧪</div>
+          <h3>Chemistry</h3>
+          <p>Atoms, periodic table, chemical reactions, stoichiometry and organic basics.</p>
+          <div><span class="topic-tag">Periodic trends</span><span class="topic-tag">Bonding</span><span class="topic-tag">Acids & Bases</span></div>
+        </div>
+        <div class="subject-card">
+          <div class="card-icon">🧬</div>
+          <h3>Biology</h3>
+          <p>Cells, genetics, evolution, ecology, human body systems — life science deep dive.</p>
+          <div><span class="topic-tag">Mitosis/Meiosis</span><span class="topic-tag">DNA</span><span class="topic-tag">Ecosystems</span></div>
+        </div>
+        <div class="subject-card">
+          <div class="card-icon">🌍</div>
+          <h3>Earth Science</h3>
+          <p>Geology, climate, astronomy, natural resources — our dynamic planet.</p>
+          <div><span class="topic-tag">Plate tectonics</span><span class="topic-tag">Weather</span><span class="topic-tag">Solar System</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Featured Video & Resources (interactive) -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2>🎥 Weekly Spark Video</h2>
+      <div class="featured-grid">
+        <div class="video-card">
+          <div class="video-preview">
+            <div class="play-icon">▶️</div>
+            <h3>🔬 The Mystery of Enzymes: Catalysts in Action</h3>
+            <p style="color:#cbd5e6;">Watch how enzymes speed up reactions — biology meets chemistry</p>
+            <span style="background:#3b82f6; display:inline-block; padding:6px 16px; border-radius:40px; margin-top:0.5rem;">Watch now →</span>
+          </div>
+        </div>
+        <div class="resource-list">
+          <h3 style="margin-bottom: 1rem;">📚 Free downloadable guides</h3>
+          <div class="resource-item">📖 <strong>Physics formula sheet</strong> — mechanics & waves (PDF)</div>
+          <div class="resource-item">🧪 <strong>Chemistry reference: periodic table + ions</strong></div>
+          <div class="resource-item">🧬 <strong>Biology: cell division visual summary</strong></div>
+          <div class="resource-item">🌍 <strong>Climate vs. Weather – infographic</strong></div>
+          <div class="resource-item">⚡ <strong>Interactive lab: Ohm's law simulator</strong> (coming soon)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily Spark Quiz: interactive natural science mini-quiz -->
+  <section class="section section-light">
+    <div class="container">
+      <h2>⚡ Daily Spark Quiz</h2>
+      <p style="margin-bottom: 1rem;">Test your knowledge — high school natural science edition</p>
+      <div class="quiz-box" id="quizContainer">
+        <div class="quiz-question" id="quizQuestion">Loading quiz...</div>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div class="quiz-feedback" id="quizFeedback"></div>
+        <button class="quiz-next" id="nextQuizBtn">Next question →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming events / schedule -->
+  <section class="section section-alt">
+    <div class="container">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
+        <div>
+          <h2>📅 Live study sessions</h2>
+          <ul style="margin-top: 1rem; list-style: none;">
+            <li style="margin-bottom: 1rem;">🔹 <strong>Tuesday 4pm EST</strong> – Physics: Electricity & Magnetism</li>
+            <li style="margin-bottom: 1rem;">🔹 <strong>Thursday 5pm EST</strong> – Chemistry: Stoichiometry workshop</li>
+            <li style="margin-bottom: 1rem;">🔹 <strong>Saturday 11am EST</strong> – Biology: Genetics problem solving</li>
+          </ul>
+        </div>
+        <div>
+          <h2>📈 Student success track</h2>
+          <p>Join 2000+ high schoolers who improved their grades by an average of 22% after 8 weeks with Spark Hub.</p>
+          <div style="margin-top: 1rem;"><span style="background:#10b981; color:white; padding:0.4rem 1rem; border-radius:40px;">✨ Start free trial →</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>🧪 Science Spark Hub — Igniting natural science curiosity for high school students worldwide</p>
+    <p style="margin-top: 1rem; font-size: 0.8rem;">© 2025 Science Spark Hub | contact@sparkhub.edu | interactive learning platform</p>
+    <p style="margin-top: 0.5rem;"><a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">YouTube channel</a></p>
+  </div>
+</footer>
+
+<script>
+  // ------------------ QUIZ BANK (high school natural science focus) ------------------
+  const quizBank = [
+    {
+      question: "Which organelle is known as the 'powerhouse of the cell'?",
+      options: ["Nucleus", "Mitochondria", "Ribosome", "Chloroplast"],
+      correct: 1, // index 1 = Mitochondria
+      explanation: "Mitochondria generate ATP through cellular respiration."
+    },
+    {
+      question: "What is the main force that governs the motion of planets around the Sun?",
+      options: ["Electromagnetic force", "Strong nuclear force", "Gravitational force", "Friction"],
+      correct: 2,
+      explanation: "Gravity provides the centripetal force for orbital motion."
+    },
+    {
+      question: "In the periodic table, elements in the same group share:",
+      options: ["Same atomic mass", "Same number of electron shells", "Same number of valence electrons", "Same state of matter"],
+      correct: 2,
+      explanation: "Group = vertical column → similar valence electron configuration, similar chemical properties."
+    },
+    {
+      question: "Which of the following is a renewable energy source?",
+      options: ["Natural gas", "Coal", "Solar power", "Uranium-235"],
+      correct: 2,
+      explanation: "Solar energy is naturally replenished, unlike fossil fuels and nuclear fuel."
+    },
+    {
+      question: "What process do plants use to convert light energy into chemical energy?",
+      options: ["Respiration", "Fermentation", "Photosynthesis", "Transpiration"],
+      correct: 2,
+      explanation: "Photosynthesis converts CO₂ and water into glucose using sunlight."
+    },
+    {
+      question: "Newton’s Second Law states that Force equals:",
+      options: ["mass × velocity", "mass × acceleration", "work / time", "energy / distance"],
+      correct: 1,
+      explanation: "F = m·a , fundamental law of dynamics."
+    },
+    {
+      question: "Which pH value indicates a neutral substance?",
+      options: ["0", "7", "14", "5"],
+      correct: 1,
+      explanation: "pH 7 is neutral (pure water)."
+    }
+  ];
+
+  let currentQuizIndex = 0;
+  let quizAnswered = false;      // to prevent multiple answers on same question
+  let selectedOptionIndex = null;
+
+  const quizQuestionEl = document.getElementById("quizQuestion");
+  const quizOptionsEl = document.getElementById("quizOptions");
+  const quizFeedbackEl = document.getElementById("quizFeedback");
+  const nextBtn = document.getElementById("nextQuizBtn");
+
+  function renderQuizQuestion() {
+    // reset states
+    quizAnswered = false;
+    selectedOptionIndex = null;
+    quizFeedbackEl.innerHTML = "";
+    const qData = quizBank[currentQuizIndex];
+    if (!qData) return;
+    quizQuestionEl.textContent = qData.question;
+    // create option buttons
+    quizOptionsEl.innerHTML = "";
+    qData.options.forEach((opt, idx) => {
+      const optDiv = document.createElement("div");
+      optDiv.className = "quiz-option";
+      optDiv.textContent = opt;
+      optDiv.setAttribute("data-opt-index", idx);
+      optDiv.addEventListener("click", () => handleAnswer(idx, optDiv));
+      quizOptionsEl.appendChild(optDiv);
+    });
+    // re-enable next button style, but reset feedback style
+    nextBtn.disabled = false;
+    nextBtn.style.opacity = "1";
+    // remove any highlight classes from previous render
+  }
+
+  function handleAnswer(selectedIdx, element) {
+    if (quizAnswered) {
+      quizFeedbackEl.innerHTML = "⚠️ You already answered! Click 'Next question' to continue.";
+      return;
+    }
+    const currentQ = quizBank[currentQuizIndex];
+    const isCorrect = (selectedIdx === currentQ.correct);
+    // provide feedback
+    let feedbackMsg = "";
+    if (isCorrect) {
+      feedbackMsg = ✅ Correct! ${currentQ.explanation};
+      quizFeedbackEl.style.color = "#15803d";
+    } else {
+      const correctAnswerText = currentQ.options[currentQ.correct];
+      feedbackMsg = ❌ Oops! The correct answer is "${correctAnswerText}". ${currentQ.explanation};
+      quizFeedbackEl.style.color = "#b91c1c";
+    }
+    quizFeedbackEl.innerHTML = feedbackMsg;
+    // mark quiz answered
+    quizAnswered = true;
+    selectedOptionIndex = selectedIdx;
+    // Style all options: highlight correct / user wrong
+    const allOptions = document.querySelectorAll(".quiz-option");
+    allOptions.forEach((opt, idx) => {
+      opt.style.pointerEvents = "none";
+      if (idx === currentQ.correct) {
+        opt.style.background = "#bbf7d0";
+        opt.style.border = "1px solid #22c55e";
+      } else if (idx === selectedIdx && idx !== currentQ.correct) {
+        opt.style.background = "#fee2e2";
+        opt.style.border = "1px solid #ef4444";
+      } else {
+        opt.style.background = "#f1f5f9";
+      }
+    });
+  }
+
+  function loadNextQuestion() {
+    if (!quizAnswered && currentQuizIndex < quizBank.length - 1) {
+      quizFeedbackEl.innerHTML = "🔔 Please answer current question before moving on.";
+      return;
+    }
+    // move to next question or loop
+    if (currentQuizIndex + 1 < quizBank.length) {
+      currentQuizIndex++;
+      renderQuizQuestion();
+    } else {
+      // completed all questions: show summary and reset from start
+      quizFeedbackEl.innerHTML = "🎉 You've completed all quiz questions! Restarting from question 1. Keep sparking!";
+      currentQuizIndex = 0;
+      renderQuizQuestion();
+    }
+  }
+
+  nextBtn.addEventListener("click", loadNextQuestion);
+
+  // quick reset for style when rendering fresh
+  function resetQuizStyles() {
+    renderQuizQuestion();
+  }
+
+  // initial load
+  resetQuizStyles();
+
+  // additional: interactive hover simulation for video card: just for flair
+  const videoCard = document.querySelector(".video-card");
+  if(videoCard) {
+    videoCard.style.cursor = "pointer";
+    videoCard.addEventListener("click", () => {
+      alert("🎬 Full video lesson: 'Enzymes: The Catalysts of Life' — streaming now on Science Spark Hub YouTube channel.");
+    });
+  }
+  // resource list demo interactive
+  const resources = document.querySelectorAll(".resource-item");
+  resources.forEach(res => {
+    res.style.cursor = "pointer";
+    res.addEventListener("click", () => {
+      alert("📥 Download resource: " + res.innerText.slice(0, 50) + " (simulated download - free PDF available in your dashboard)");
+    });
+  });
+  // hero stats animated count? optional smoothness
+  console.log("Science Spark Hub — ready to ignite learning!");
+</script>
+</body>
+</html>
